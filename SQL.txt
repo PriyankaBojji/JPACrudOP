@@ -1,0 +1,54 @@
+create table Hotel(hotel_id varchar(4) primary key, city varchar(10), hotel_name varchar (20), address varchar(25), description varchar(50), avg_rate_per_night NUMBER(6,2), phone_no1 varchar(10), phone_no2 varchar(10), rating varchar(4), email varchar(15), fax varchar(15));
+create table Users(user_id varchar(4) primary key, password varchar(7), role varchar(10),  user_name varchar (20), mobile_no varchar(10), phone varchar(10), address varchar(25), email varchar(15));
+create table RoomDetails(hotel_id REFERENCES Hotel(hotel_id),  room_id varchar(4) primary key,  room_no varchar(3), room_type varchar(20), per_night_rate number(6,2), availability number(1));
+create table BookingDetails(booking_id varchar(4) primary key, room_id varchar(4) REFERENCES RoomDetails(room_id),  user_id varchar(4), booked_from date, booked_to date, no_of_adults number(2), no_of_children number(2), amount number(6,2));
+
+---------------------------------------------------------------------------------
+
+insert into Hotel values('H105','Hyderabad','Deccan Inn','Madhapur','situated on the main road',1500,9090909098,9090909099,'3','decan@gmail.com',18884752969);
+insert into Hotel values('H104','Panaji','Hotel Clausil','Miramar','near Miramar beach',1000,9090909096,9090909097,'2','claus@gmail.com',18884752964);
+insert into Hotel values('H103','Banglore','Hotel Ajantha','Trinity Circle','easy access to shopping markets',1800,9090909094,9090909095,'5','ajant@gmail.com',18884752963);
+insert into Hotel values('H102','Mumbai','Hotel Royal NS','Andheri East','situated near western express highway',1500,9090909092,9090909093,'4','royal@gmail.com',18884732962);
+insert into Hotel values('H101','Pune','Hotel Solitaire','Hinjewadi IT Park Phase2','Ideal for Corporates and Conferences',1200,9090909090,9090909091,'3','solit@gmail.com',18884732963);
+
+---------------------------------------------------------------------------------
+
+insert into Users values('U101','U101','Customer','jeet',9020202020,0722424512,'Ram Nagar Nagpur','jeet@gmail.com');
+insert into Users values('U102','U102','Customer','nikita',9020202021,0722424511,'Vilas Nagar Jaipur','nik@gmail.com');
+insert into Users values('U103','U103','Customer','ankita',9020202024,0722424516,'Vina Colony Kanpur','ani@gmail.com');
+insert into Users values('U104','U104','Customer','Vaish',9020202012,0722424512,'Kailas Nagar Jammu','vaish@gmail.com');
+insert into Users values('U105','U105','Customer','Jassi',9020202013,0722424513,'Hemant nagar akola','jass@gmail.com');
+insert into Users values('U106','U106','Customer','lucky',9020202014,0722424514,'Jay Nagar Washim','luc@gmail.com');
+insert into Users values('U107','U107','Customer','Atul',9020202015,0722424515,'MG road Pune','atul@gmail.com');
+insert into Users values('U108','U108','Customer','Piyu',9020202016,0722424516,'LG road Delhi','piyu@gmail.com');
+insert into Users values('U109','U109','Customer','arshi',9020202017,0722424517,'Veer nagar Guwahati','arshi@gmail.com');
+insert into Users values('U110','U110','Customer','Harshi',9020202018,0722424518,'Alia colony pune','harsh@gmail.com');
+
+---------------------------------------------------------------------------------
+
+insert into RoomDetails values('H105','R503',503,'Executive A/C',1500,0);
+insert into RoomDetails values('H105','R502',502,'Deluxe A/C',1400,0);
+insert into RoomDetails values('H105','R501',501,'Standard A/C',1400,1);
+
+insert into RoomDetails values('H104','R403',403,'Standard Non A/C',1100,1);
+insert into RoomDetails values('H104','R402',402,'Standard A/C',1250,1);
+insert into RoomDetails values('H104','R401',401,'Deluxe A/C',1300,1);
+
+insert into RoomDetails values('H103','R303',303,'Executive A/C',1400,0);
+insert into RoomDetails values('H103','R302',302,'Standard A/C',1200,0);
+insert into RoomDetails values('H103','R301',301,'Standard Non A/C',1000,1);
+
+insert into RoomDetails values('H102','R203',203,'Standard A/C',1400,1);
+insert into RoomDetails values('H102','R202',202,'Deluxe A/C',1400,1);
+insert into RoomDetails values('H102','R201',201,'Deluxe A/C',1400,0);
+
+insert into RoomDetails values('H101','R102',102,'Standard A/C',1500,0);
+insert into RoomDetails values('H101','R103',103,'Executive A/C',1400,0);
+insert into RoomDetails values('H101','R101',101,'Standard Non A/C',1200,1);
+ 
+ -----------------------------------------------------------------------------------
+ 
+create sequence User_Id_Seq start with 101 increment by 1;                     
+
+-------------------------------------------------------------------------------------
+
